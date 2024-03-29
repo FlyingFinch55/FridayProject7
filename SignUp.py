@@ -28,7 +28,7 @@ class SignUpTime:
         self.PassEntry.grid(row=25,column=15)
 
         self.labeCheckPass = ttk.Label(master)
-        self.labeCheckPass.config(text= "Password again: ")
+        self.labeCheckPass.config(text= "Password re-entry: ")
         self.labeCheckPass.grid(row=50,column=0)
 
         self.PassTwoEntry = ttk.Entry(master)
@@ -54,12 +54,15 @@ class SignUpTime:
         if "." not in emails:
             self.checkLable1.config(text="Invaild email")
             return
+        if "@" and "." in emails:
+            self.checkLable1.config(text=" ")
+
         if passwords != passwordTwo:
             self.checkLable2.config(text="Passwords do not match")
             return
 
         def checker(emails):
-            curse.execute("SELECT email FROM loginInfo WHERE email=?", (emails,))
+            curse.execute("SELECT email FROM userInfo WHERE email=?", (emails,))
         if checker(emails):
             self.checkLable1.config(text="Email already in database")
         else:
