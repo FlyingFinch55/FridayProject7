@@ -36,9 +36,48 @@ class SignUpTime:
 
         self.SubmitBut = ttk.Button(master)
         self.SubmitBut.config(text= "Submit")
+        self.SubmitBut.config(command=self.saveInfo)
         self.SubmitBut.grid(row=100,column=5)
 
+        self.checkLable1 = ttk.Label(master)
+        self.checkLable1.grid(row=150, column=5)
+        self.checkLable2 = ttk.Label(master)
+        self.checkLable2.grid(row=200, column=5)
 
+    def saveInfo(self):
+        emails = self.EmailEntry.get()
+        passwords = self.PassEntry.get()
+        passwordTwo = self.PassTwoEntry.get()
+        if "@" not in emails:
+            self.checkLable1.config(text="Invaild email")
+            return
+        if "." not in emails:
+            self.checkLable1.config(text="Invaild email")
+            return
+        if passwords != passwordTwo:
+            self.checkLable2.config(text="Passwords do not match")
+            return
+
+        def checker(emails):
+            curse.execute("SELECT email FROM loginInfo WHERE email=?", (emails,))
+        if checker(emails):
+            self.checkLable1.config(text="Email already in database")
+        else:
+            addUser(emails,passwords)
+            self.checkLable1.config(text="")
+            self.checkLable2.config(text="")
+
+        self.EmailEntry.delete(0,'end')
+        self.PassEntry.delete(0,'end')
+        self.PassTwoEntry.delete(0,'end')
+        
+
+
+
+
+        
+
+        
 
 
 
@@ -59,7 +98,7 @@ def addUser(email, password):
 
 Welcom = SignUpTime(root)
 
-#addUser()
+
 
 
 root.mainloop()
