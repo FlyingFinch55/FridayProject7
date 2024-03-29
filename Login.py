@@ -43,7 +43,7 @@ class LoginTime:
 
 
 
-
+logger = LoginTime(root)
 
 
 root.mainloop()
