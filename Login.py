@@ -29,12 +29,17 @@ class LoginTime:
 
         self.LoginBut = ttk.Button(master)
         self.LoginBut.config(text="Login")
+        self.LoginBut.config(command= self.checkLogin)
         self.LoginBut.grid(row=50, column= 5)
 
         self.checkLable1 = ttk.Label(master)
         self.checkLable1.grid(row=100, column=5)
         self.checkLable2 = ttk.Label(master)
         self.checkLable2.grid(row=150, column=5)
+
+    def checkLogin(self):
+        emailss = self.EmailEntry.get()
+        passwordss = self.PassEntry.get()
 
 
 
