@@ -12,7 +12,7 @@ curse = conn.cursor()
 class LoginTime:
 
     def __init__(self, master):
-        
+
         self.labeEmail = ttk.Label(master)
         self.labeEmail.config(text= "Email: ")
         self.labeEmail.grid(row=0,column=0)
@@ -26,6 +26,15 @@ class LoginTime:
 
         self.PassEntry = ttk.Entry(master)
         self.PassEntry.grid(row=25,column=15)
+
+        self.LoginBut = ttk.Button(master)
+        self.LoginBut.config(text="Login")
+        self.LoginBut.grid(row=50, column= 5)
+
+        self.checkLable1 = ttk.Label(master)
+        self.checkLable1.grid(row=100, column=5)
+        self.checkLable2 = ttk.Label(master)
+        self.checkLable2.grid(row=150, column=5)
 
 
 
