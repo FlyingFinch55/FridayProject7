@@ -3,6 +3,7 @@ from tkinter import ttk
 import sqlite3
 
 root = Tk()
+root.title("Sign Up Page")
 
 
 
@@ -32,6 +33,10 @@ class SignUpTime:
 
         self.PassTwoEntry = ttk.Entry(master)
         self.PassTwoEntry.grid()
+
+        self.SubmitBut = ttk.Button(master)
+        self.SubmitBut.config(text= "Submit")
+        self.SubmitBut.grid()
 
 
 
