@@ -12,7 +12,27 @@ curse = conn.cursor()
 
 class SignUpTime:
     def __init__(self, master):
-        self.labe1 = ttk.Label(master)
+        self.labeEmail = ttk.Label(master)
+        self.labeEmail.config(text= "Email: ")
+        self.labeEmail.grid()
+
+        self.EmailEntry = ttk.Entry(master)
+        self.EmailEntry.grid()
+
+        self.labePass = ttk.Label(master)
+        self.labePass.config(text="Password: ")
+        self.labePass.grid()
+
+        self.PassEntry = ttk.Entry(master)
+        self.PassEntry.grid()
+
+        self.labeCheckPass = ttk.Label(master)
+        self.labeCheckPass.config(text= "Password again: ")
+        self.labeCheckPass.grid()
+
+        self.PassTwoEntry = ttk.Entry(master)
+        self.PassTwoEntry.grid()
+
 
 
 curse.execute("""
