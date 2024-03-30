@@ -28,6 +28,7 @@ class LoginTime:
         self.labePass.grid(row=25,column=0)
 
         self.PassEntry = ttk.Entry(master)
+        self.PassEntry.config(show = "*")
         self.PassEntry.grid(row=25,column=15)
 
         self.LoginBut = ttk.Button(master)
