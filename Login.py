@@ -10,8 +10,8 @@ root.title("Login Page")
 conn= sqlite3.connect('LoginInfo.db')
 curse = conn.cursor()
 
-curse.execute("SELECT * FROM DatabaseInfo") # was using for bug cathcing
-print(curse.fetchall())
+#curse.execute("SELECT * FROM DatabaseInfo") # was using for bug cathcing
+#print(curse.fetchall())
 
 #class where the main progam is 
 class LoginTime:
