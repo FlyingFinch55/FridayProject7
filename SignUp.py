@@ -62,44 +62,47 @@ class SignUpTime:
             return
 
         def checker(emails):
-            curse.execute("SELECT email FROM userInfo WHERE email=?", (emails,))
-        if checker(emails):
+            curse.execute("SELECT * FROM DatabaseInfo WHERE email=?", (emails,))
+            if curse.fetchall():
+                return True
+            else:
+                return False
+        if checker(emails) == TRUE:
             self.checkLable1.config(text="Email already in database")
         else:
             addUser(emails,passwords)
             self.checkLable1.config(text="")
             self.checkLable2.config(text="")
-
-        self.EmailEntry.delete(0,'end')
-        self.PassEntry.delete(0,'end')
-        self.PassTwoEntry.delete(0,'end')
+            self.EmailEntry.delete(0,'end')
+            self.PassEntry.delete(0,'end')
+            self.PassTwoEntry.delete(0,'end')
         
-
-
-
-
-        
-
-        
-
 
 
 curse.execute("""
               CREATE TABLE IF NOT EXISTS DatabaseInfo (
-              email INTEGER,
+              email TEXT,
               password TEXT )
               """)
+
+
 
 def addUser(email, password):
 
     curse.execute("""
-                INSERT INTO userInfo(email, password) 
-                VALUES (?,?,?,?)""", (email, password)
+                INSERT INTO DatabaseInfo(email, password) 
+                VALUES (?,?)""", (email,password)
+
     )
     conn.commit()
+    print("User added :)")
 
 
+#testUser = "kmfinch42@tnech.edu"
+#testPass = "Daddy321?"
+#addUser(testUser,testPass)
 Welcom = SignUpTime(root)
+
 
 
 
