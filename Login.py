@@ -51,23 +51,18 @@ class LoginTime:
     def checkLogin(self):
         emailss = self.EmailEntry.get()
         passwordss = self.PassEntry.get()
-        #checks for email
+        #checks for email and password
         def Echecker(emailss):
-            curse.execute("SELECT email FROM DatabaseInfo WHERE email=?", (emailss,))
-            if curse.fetchall():
-                return True
-            else:
-                return False
-        #checks for password
-        def Pcheck(passwordss):
-            curse.execute("SELECT password FROM DatabaseInfo WHERE password=?",(passwordss,))
-            if curse.fetchall() and Echecker(emailss) == TRUE:
+            curse.execute("SELECT * FROM DatabaseInfo WHERE email=?", (emailss,))
+            results = curse.fetchone()
+            if results is not NONE and results[1] == passwordss:#Makes sure that the password matches the email and not just anypassword in the file
                 return True
             else:
                 return False
 
+
         #If both the email and password are correct then login succerful and then clear entry boxes    
-        if Echecker(emailss) == TRUE and Pcheck(passwordss) == TRUE:
+        if Echecker(emailss) == TRUE:
             self.checkLable1.config(text= "Login Successful")
             self.checkLable1.config(foreground= 'green')
             self.EmailEntry.delete(0,'end')
